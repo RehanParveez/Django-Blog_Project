@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>branch_by page</title>
-</head>
-<body>
-    <h2>Posts in Branch: {{branch.name}}</h2>
+
+{% extends "blogapp/parent.html" %}
+
+{% block title %}Posts in Branch{% endblock %}
+
+{% block content %}
+<h2>Posts in Branch: {{branch.name}}</h2>
 
 {% for post in posts %}
     <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
     <p><a href="{% url 'post_detail' post.id %}">Detail</a></p>
     <p><a href="{% url 'post_update' post.id %}">Update</a></p>
-    <p><a href="{% url 'post_delete' post.id %}">Delete</a></p>
+    <p><a href="{% url 'post_delete' post.pk %}">Delete</a></p>
 {% empty %}
     <p>No posts in this branch</p>
 {% endfor %}
 
-</body>
-</html>
+{% endblock %}

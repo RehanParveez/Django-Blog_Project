@@ -1,0 +1,15 @@
+
+{% extends "blogapp/parent.html" %}
+
+{% block content %}
+<h2>Are you sure you want to delete this post?</h2>
+
+<p><strong>{{post.title}}</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'post_detail' post.id %}">Cancel</a>
+</form>
+{% endblock %}
+

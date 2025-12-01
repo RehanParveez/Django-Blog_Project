@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Page</title>
-</head>
-<body>
-    <h2>Create Post</h2>
+
+{% extends "blogapp/parent.html" %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+<h2>Create Post</h2>
 
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{form.as_p}}
     <button type="submit">Create</button>
 </form>
 
-<p><a href="{% url 'post_list' %}">Back</a></p>
+<a href="{% url 'post_list' %}">Back</a>
+{% endblock %}
 
-</body>
-</html>

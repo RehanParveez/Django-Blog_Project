@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Page</title>
-</head>
-<body>
-    <h2>All Posts</h2>
 
-<a href="{% url 'post_create' %}">Create New Post</a>
-<hr>
+{% extends "blogapp/parent.html" %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+<h2>All Posts</h2>
 
 {% for post in posts %}
     <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
-    <p>Branch: {{ post.branch.name }}</p>
-    <p>Created: {{ post.created_at }}</p>
+    <p>Branch: {{post.branch.name}}</p>
+    <p>Created: {{post.created_at}}</p>
     <br>
+{% empty %}
+    <p>No posts available</p>
 {% endfor %}
-</body>
-</html>
+
+{% endblock %}
+
 
 
 

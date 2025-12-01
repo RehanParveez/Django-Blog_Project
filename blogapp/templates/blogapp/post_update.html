@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Page</title>
-</head>
-<body>
-    <h2>Edit Post</h2>
+
+{% extends "Blogapp/parent.html" %}
+
+{% block title %}Update Post{% endblock %}
+
+{% block content %}
+<h2>Edit Post</h2>
 
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{form.as_p}}
     <button type="submit">Update</button>
 </form>
 
-<p><a href="{% url 'post_detail' post.id %}">Cancel</a></p>
-
-</body>
-</html>
+<a href="{% url 'post_detail' post.id %}">Cancel</a>
+{% endblock %}

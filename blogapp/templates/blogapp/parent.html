@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django Blog{% endblock %}</title>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'post_list' %}">Home</a><br>
+    <a href="{% url 'post_create' %}">Create Post</a>
+
+    <span style="float:right;">
+        {% if request.user.is_authenticated %}
+            Welcome {{ request.user.username }}<br>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a><br>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </span>
+</nav>
+<hr>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
